@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/project-kebab/static/css/main.073c9b0a.css",
-    "main.js": "/project-kebab/static/js/main.c6951481.js",
+    "main.css": "/project-kebab/static/css/main.e1ae4293.css",
+    "main.js": "/project-kebab/static/js/main.92bc2fd7.js",
     "static/js/787.4960fd22.chunk.js": "/project-kebab/static/js/787.4960fd22.chunk.js",
-    "static/media/logo.svg": "/project-kebab/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/trashIcon.png": "/project-kebab/static/media/trashIcon.7c6432cea5b85f8da102.png",
     "index.html": "/project-kebab/index.html",
-    "main.073c9b0a.css.map": "/project-kebab/static/css/main.073c9b0a.css.map",
-    "main.c6951481.js.map": "/project-kebab/static/js/main.c6951481.js.map",
+    "main.e1ae4293.css.map": "/project-kebab/static/css/main.e1ae4293.css.map",
+    "main.92bc2fd7.js.map": "/project-kebab/static/js/main.92bc2fd7.js.map",
     "787.4960fd22.chunk.js.map": "/project-kebab/static/js/787.4960fd22.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.c6951481.js"
+    "static/css/main.e1ae4293.css",
+    "static/js/main.92bc2fd7.js"
   ]
 }
