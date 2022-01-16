@@ -17,14 +17,14 @@ function App() {
 
     <Routes>
 
-      <Route path="/" element={
+      <Route path="/project-kebab/" element={
         <div>
           <Appbar model={model} />
           <Index model={model} />
         </div>
       } />
 
-      <Route path="/kebabstorage" element={
+      <Route path="/project-kebab/kebabstorage" element={
         <div>
           <Appbar model={model} />
           <KebabStorage model={model} />
