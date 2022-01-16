@@ -17,6 +17,13 @@ function App() {
 
     <Routes>
 
+      <Route path="/" element={
+        <div>
+          <Appbar model={model} />
+          <Index model={model} />
+        </div>
+      } />
+
       <Route path="/project-kebab/" element={
         <div>
           <Appbar model={model} />
@@ -25,6 +32,13 @@ function App() {
       } />
 
       <Route path="/kebabstorage/" element={
+        <div>
+          <Appbar model={model} />
+          <KebabStorage model={model} />
+        </div>
+      } />
+
+      <Route path="/project-kebab/kebabstorage/" element={
         <div>
           <Appbar model={model} />
           <KebabStorage model={model} />
