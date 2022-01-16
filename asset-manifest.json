@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/project-kebab/static/css/main.073c9b0a.css",
+    "main.js": "/project-kebab/static/js/main.c6951481.js",
+    "static/js/787.4960fd22.chunk.js": "/project-kebab/static/js/787.4960fd22.chunk.js",
+    "static/media/logo.svg": "/project-kebab/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/project-kebab/index.html",
+    "main.073c9b0a.css.map": "/project-kebab/static/css/main.073c9b0a.css.map",
+    "main.c6951481.js.map": "/project-kebab/static/js/main.c6951481.js.map",
+    "787.4960fd22.chunk.js.map": "/project-kebab/static/js/787.4960fd22.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.c6951481.js"
+  ]
+}
