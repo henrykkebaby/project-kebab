@@ -24,7 +24,7 @@ function App() {
         </div>
       } />
 
-      <Route path="/project-kebab/kebabstorage" element={
+      <Route path="/kebabstorage/" element={
         <div>
           <Appbar model={model} />
           <KebabStorage model={model} />
