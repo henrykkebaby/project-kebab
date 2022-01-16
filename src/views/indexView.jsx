@@ -4,7 +4,7 @@ import "../styles/styles.css"
 function IndexView(props) {
     return (
         <div className='Tiles'>
-            <div onClick={() => props.navigate("/kebabstorage")} className='Tile' style={{ backgroundColor: "rgb(240, 208, 65)" }}>
+            <div onClick={() => props.navigate("/kebabstorage/")} className='Tile' style={{ backgroundColor: "rgb(240, 208, 65)" }}>
                 <a style={{ color: "black" }} className="TileText">KEBAB STORAGE</a>
                 <img height="150px" src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png' />
             </div>
