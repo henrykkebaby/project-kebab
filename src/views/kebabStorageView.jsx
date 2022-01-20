@@ -44,8 +44,8 @@ function KebabStorageView(props) {
             </div>
             <div style={{ flex: "1", border: "1px lightgrey solid", float: "right", minWidth: "500px", margin: "15px", padding: "10px" }}>
                 <h3 style={{ wordWrap: "break-word" }}>{props.path}</h3>
-                <input id="fileUploader" type="file" onChange={(e) => props.fileUpload(e.target.files[0])} style={{ display: "none" }} />
-                <label for="fileUploader" style={{ border: "1px grey solid", padding: "10px", userSelect: "none", cursor: "pointer" }}>Click to upload a file here</label>
+                <input id="fileUploader" type="file" multiple="multiple" onChange={(e) => props.fileUpload(e.target.files)} style={{ display: "none" }} />
+                <label for="fileUploader" style={{ border: "1px grey solid", padding: "12.5px", userSelect: "none", cursor: "pointer" }}>Click to upload files here</label>
                 <br />
                 <input id="folderInput" type="text" style={{ marginTop: "20px", height: "40px", width: "162px" }} placeholder="Create a folder here..." onKeyPress={event => { if (event.key === 'Enter') { props.createFolder() } }} />
                 <button onClick={() => props.createFolder()} style={{ height: "40px", width: "40px", cursor: "pointer" }}>+</button>

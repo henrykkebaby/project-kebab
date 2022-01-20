@@ -98,17 +98,18 @@ function KebabStoragePresenter(props) {
   function fileUpload(uploadFile) {
     if (uploadFile == null) { return; }
 
-    let baseURL = "";
+    [...uploadFile].forEach(file => {
+      let baseURL = "";
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        baseURL = reader.result;
+        props.model.connection.emit("uploadFile", baseURL, path + file.name, path);
+        document.getElementById("fileUploader").value = null;
+      }
+    })
 
-    let reader = new FileReader();
 
-    reader.readAsDataURL(uploadFile);
-
-    reader.onload = () => {
-      baseURL = reader.result;
-      props.model.connection.emit("uploadFile", baseURL, path + uploadFile.name, path);
-      document.getElementById("fileUploader").value = null;
-    };
 
   }
 
