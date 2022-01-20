@@ -22,6 +22,12 @@ function KebabStoragePresenter(props) {
       setList(folderList.concat(fileList))
     })
 
+    props.model.connection.on("gotDirError", () => {
+      setList(["AN ERROR OCCURED PLEASE WAIT"])
+      setPath("/")
+      getDir("/")
+    })
+
     props.model.connection.on("gotFile", (value, name) => {
 
       var dataURL = mime.getType(name)
