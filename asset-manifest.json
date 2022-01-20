@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/project-kebab/static/css/main.e1ae4293.css",
-    "main.js": "/project-kebab/static/js/main.a6233be6.js",
+    "main.js": "/project-kebab/static/js/main.01cb2d7e.js",
     "static/js/787.4960fd22.chunk.js": "/project-kebab/static/js/787.4960fd22.chunk.js",
     "static/media/trashIcon.png": "/project-kebab/static/media/trashIcon.7c6432cea5b85f8da102.png",
     "index.html": "/project-kebab/index.html",
     "main.e1ae4293.css.map": "/project-kebab/static/css/main.e1ae4293.css.map",
-    "main.a6233be6.js.map": "/project-kebab/static/js/main.a6233be6.js.map",
+    "main.01cb2d7e.js.map": "/project-kebab/static/js/main.01cb2d7e.js.map",
     "787.4960fd22.chunk.js.map": "/project-kebab/static/js/787.4960fd22.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e1ae4293.css",
-    "static/js/main.a6233be6.js"
+    "static/js/main.01cb2d7e.js"
   ]
 }
