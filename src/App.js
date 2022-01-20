@@ -12,6 +12,10 @@ model.setConnection(io(process.env.REACT_APP_SERVERIP));
 model.connection.on("connect", () => { model.setConnectionStatus("green") })
 model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 
+//npm run deploy  -- deploy to github pages
+//npm start
+
+
 function App() {
 
   return (

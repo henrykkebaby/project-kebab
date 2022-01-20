@@ -19,12 +19,12 @@ function KebabStorageView(props) {
                 {props.list.map((item) => {
                     return (
                         item.toString().includes(".") ?
-                            <div style={{ display: "flex", flexDirection: "row", cursor: "pointer" }}>
+                            <div style={{ display: "flex", flexDirection: "row" }}>
                                 <div onClick={() => props.setSelectedFile(item.toString())} key={item} style={{ flex: "1", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", cursor: "pointer", display: "flex", flexDirection: "row" }}>
                                     <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={fileIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
                                     <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
                                 </div>
-                                <div style={{ width: "30px", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px" }}>
+                                <div style={{ width: "30px", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", cursor: "pointer" }}>
                                     <img onClick={() => { props.remFile(item.toString()); props.setSelectedFile(null) }} height="20px" src={trashIcon} style={{ marginRight: "0px", marginLeft: "auto", marginTop: "16px", userSelect: "none" }} />
                                 </div>
                             </div>

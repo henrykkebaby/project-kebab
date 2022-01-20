@@ -11,6 +11,7 @@ function KebabStoragePresenter(props) {
   useEffect(() => {
 
     props.model.connection.on("gotDir", (value) => {
+      if (!value) { return }
       var folderList = []
       var fileList = []
       value.forEach(element => {
