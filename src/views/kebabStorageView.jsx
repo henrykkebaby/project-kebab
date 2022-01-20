@@ -24,8 +24,8 @@ function KebabStorageView(props) {
                                     <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={fileIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
                                     <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
                                 </div>
-                                <div style={{ width: "30px", height: "50px", backgroundColor: "rgb(250, 218, 77)", cursor: "pointer", marginTop: "15px" }}>
-                                    <img onClick={() => { props.remFile(props.selectedFile); props.setSelectedFile(null) }} height="20px" src={trashIcon} style={{ marginRight: "0px", marginLeft: "auto", marginTop: "16px", userSelect: "none" }} />
+                                <div style={{ width: "30px", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px" }}>
+                                    <img onClick={() => { props.remFile(item.toString()); props.setSelectedFile(null) }} height="20px" src={trashIcon} style={{ marginRight: "0px", marginLeft: "auto", marginTop: "16px", userSelect: "none" }} />
                                 </div>
                             </div>
                             :
