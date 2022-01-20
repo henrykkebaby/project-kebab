@@ -23,7 +23,9 @@ function KebabStoragePresenter(props) {
     })
 
     props.model.connection.on("gotDirError", () => {
-      setList(["AN ERROR OCCURED PLEASE WAIT"])
+      alert("ERROR: Fixing directory error\n\nPlease wait...")
+      setSelectedFile(null)
+      setList([])
       setPath("/")
       getDir("/")
     })
