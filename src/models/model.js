@@ -1,11 +1,22 @@
 class Model {
 
-    constructor(observers = [], connection = null, connectionStatus = "red", username = "", password = "") {
+    constructor(observers = [], connection = null, connectionStatus = "red", username = "", password = "", cookie) {
         this.observers = observers;
         this.connection = connection;
         this.connectionStatus = connectionStatus;
         this.username = username;
         this.password = password;
+        this.cookie = cookie;
+    }
+
+    assignCookie(cookie) {
+        this.cookie = cookie
+    }
+
+    setCookie(arg1, arg2) {
+        this.cookie(arg1, arg2, {
+            path: "/"
+        });
     }
 
     setUsername(username) {

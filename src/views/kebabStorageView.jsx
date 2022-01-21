@@ -19,25 +19,19 @@ function KebabStorageView(props) {
                 {props.list.map((item) => {
                     return (
                         item.toString().includes(".") ?
-                            <div style={{ display: "flex", flexDirection: "row" }}>
-                                <div onClick={() => props.setSelectedFile(item.toString())} key={item} style={{ flex: "1", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", cursor: "pointer", display: "flex", flexDirection: "row" }}>
-                                    <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={fileIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
-                                    <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
-                                </div>
-                                <div style={{ width: "30px", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", cursor: "pointer" }}>
-                                    <img onClick={() => { props.remFile(item.toString()); props.setSelectedFile(null) }} height="20px" src={trashIcon} style={{ marginRight: "0px", marginLeft: "auto", marginTop: "16px", userSelect: "none" }} />
-                                </div>
+
+                            <div onClick={() => props.handleClick(item.toString())} onDoubleClick={() => props.handleDoubleClick(item.toString())} key={item} style={{ flex: "1", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", cursor: "pointer", display: "flex", flexDirection: "row" }}>
+                                <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={fileIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
+                                <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
                             </div>
+
                             :
-                            <div style={{ display: "flex", flexDirection: "row" }}>
-                                <div onClick={() => { props.setSelectedFile(null); props.addPath(item.toString()) }} key={item} style={{ flex: "1", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", cursor: "pointer", display: "flex", flexDirection: "row" }}>
-                                    <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={folderIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
-                                    <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
-                                </div>
-                                <div style={{ width: "30px", height: "50px", backgroundColor: "rgb(250, 218, 77)", cursor: "pointer", marginTop: "15px" }}>
-                                    <img onClick={() => props.remFolder(item.toString())} height="20px" src={trashIcon} style={{ marginRight: "0px", marginLeft: "auto", marginTop: "16px", userSelect: "none" }} />
-                                </div>
+
+                            <div onClick={() => props.handleClick(item.toString())} onDoubleClick={() => props.handleDoubleClick(item.toString())} key={item} style={{ flex: "1", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", cursor: "pointer", display: "flex", flexDirection: "row" }}>
+                                <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={folderIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
+                                <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
                             </div>
+
                     )
                 })}
                 {props.list.length === 0 ? <h2>This Directory Is Empty</h2> : ""}
@@ -45,7 +39,7 @@ function KebabStorageView(props) {
             <div style={{ flex: "1", border: "1px lightgrey solid", float: "right", minWidth: "500px", margin: "15px", padding: "10px" }}>
                 <h3 style={{ wordWrap: "break-word" }}>{props.path}</h3>
                 <input id="fileUploader" type="file" multiple="multiple" onChange={(e) => props.fileUpload(e.target.files)} style={{ display: "none" }} />
-                <label for="fileUploader" style={{ border: "1px grey solid", padding: "12.5px", userSelect: "none", cursor: "pointer" }}>Click to upload files here</label>
+                <label htmlFor="fileUploader" style={{ border: "1px grey solid", padding: "12.5px", userSelect: "none", cursor: "pointer" }}>Click to upload files here</label>
                 <br />
                 <input id="folderInput" type="text" style={{ marginTop: "20px", height: "40px", width: "162px" }} placeholder="Create a folder here..." onKeyPress={event => { if (event.key === 'Enter') { props.createFolder() } }} />
                 <button onClick={() => props.createFolder()} style={{ height: "40px", width: "40px", cursor: "pointer" }}>+</button>
@@ -54,7 +48,7 @@ function KebabStorageView(props) {
                         <div>
                             <h2>{props.selectedFile}</h2>
                             <div style={{ flexDirection: "row", alignContent: "center" }}>
-                                <img onClick={() => props.getFile(props.selectedFile)} height={"50px"} src={downloadIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
+                                {props.selectedFile.includes(".") ? <img onClick={() => props.getFile(props.selectedFile)} height={"50px"} src={downloadIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} /> : ""}
                                 <img onClick={() => { props.remFile(props.selectedFile); props.setSelectedFile(null) }} height={"50px"} src={trashIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
                             </div>
                         </div>

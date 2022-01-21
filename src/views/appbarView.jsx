@@ -7,7 +7,6 @@ function AppbarView(props) {
             <a onClick={() => props.navigate("/project-kebab/")} style={{ fontSize: "30px", fontWeight: "bold", userSelect: "none", cursor: "pointer" }}> PROJECT KEBAB</a>
             <div style={{ height: "20px", width: "20px", backgroundColor: props.connectionStatus, borderRadius: "50%", display: "inline-block", float: "right", marginTop: "10px", marginRight: "10px" }}></div>
 
-
             {props.model.username === "" ?
                 <a onClick={() => props.navigate("/project-kebab/login/")} style={{ color: "red", fontSize: "30px", fontWeight: "bold", userSelect: "none", cursor: "pointer", float: "right", marginRight: "40px" }}>LOGIN</a>
                 :

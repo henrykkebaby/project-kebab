@@ -1,14 +1,12 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LoginView from '../views/loginView';
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
 function LoginPresenter(props) {
 
-    const [failed, setFailed] = React.useState(false)
-    const [username, setUsername] = React.useState("")
-    const [password, setPassword] = React.useState("")
-    const [cookies, setCookie] = useCookies(["username", "password"]);
+    const [failed, setFailed] = useState(false)
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
 
     const navigate = useNavigate();
 
@@ -18,12 +16,8 @@ function LoginPresenter(props) {
                 navigate("/project-kebab/");
             } else {
                 props.model.setAuth("", "");
-                setCookie("username", "", {
-                    path: "/"
-                });
-                setCookie("password", "", {
-                    path: "/"
-                });
+                props.model.setCookie("username", "")
+                props.model.setCookie("password", "")
                 setFailed(true)
             }
         })
@@ -34,12 +28,8 @@ function LoginPresenter(props) {
         sha256(password).then((promise) => {
             props.model.connection.emit("credentials", username, promise);
             props.model.setAuth(username, promise);
-            setCookie("username", username, {
-                path: "/"
-            });
-            setCookie("password", promise, {
-                path: "/"
-            });
+            props.model.setCookie("username", username)
+            props.model.setCookie("password", promise)
         })
     }
 

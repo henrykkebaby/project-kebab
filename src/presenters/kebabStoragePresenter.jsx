@@ -114,9 +114,18 @@ function KebabStoragePresenter(props) {
         document.getElementById("fileUploader").value = null;
       }
     })
+  }
 
+  function handleClick(item, element) {
+    if (item.includes(".")) { setSelectedFile(item) }
+    else { setSelectedFile(item) }
 
+    //element.style.backgroundColor = "rgb(130, 190, 240)"
+  }
 
+  function handleDoubleClick(item) {
+    if (item.includes(".")) { getFile(item) }
+    else { setSelectedFile(null); addPath(item); }
   }
 
   return (
@@ -133,6 +142,8 @@ function KebabStoragePresenter(props) {
       fileUpload={fileUpload}
       selectedFile={selectedFile}
       setSelectedFile={setSelectedFile}
+      handleClick={handleClick}
+      handleDoubleClick={handleDoubleClick}
     />
   );
 }
