@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 
 function LoginPresenter(props) {
 
+    const [failed, setFailed] = React.useState(false)
     const [username, setUsername] = React.useState("")
     const [password, setPassword] = React.useState("")
     const [cookies, setCookie] = useCookies(["username", "password"]);
@@ -23,6 +24,7 @@ function LoginPresenter(props) {
                 setCookie("password", "", {
                     path: "/"
                 });
+                setFailed(true)
             }
         })
         return () => { props.model.connection.off('validation'); }
@@ -54,6 +56,7 @@ function LoginPresenter(props) {
             setUsername={setUsername}
             setPassword={setPassword}
             submitter={submitter}
+            failed={failed}
         />
     )
 }

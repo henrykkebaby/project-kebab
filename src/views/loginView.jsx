@@ -12,6 +12,8 @@ function LoginView(props) {
                 <div>Password:</div>
                 <div><input id="passwordInput" type="password" onChange={(e) => props.setPassword(e.target.value)} onKeyPress={event => { if (event.key === 'Enter') { props.submitter() } }} /></div>
                 <div><button onClick={() => props.submitter()}>Log in</button></div>
+                <br />
+                {props.failed ? <div style={{ color: "red" }}>Login failed</div> : ""}
             </div>
         </div>
     )
