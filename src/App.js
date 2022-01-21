@@ -11,8 +11,8 @@ import Appbar from "./presenters/appbarPresenter";
 import Contextmenu from './components/contextmenu';
 
 const model = new Model();
-//model.setConnection(io(process.env.REACT_APP_SERVERIP));
-model.setConnection(io("http://localhost:3024"));
+model.setConnection(io(process.env.REACT_APP_SERVERIP));
+//model.setConnection(io("http://localhost:3024"));
 model.connection.on("connect", () => { model.setConnectionStatus("green") })
 model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 
