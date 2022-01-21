@@ -17,7 +17,7 @@ function IndexView(props) {
                 <a style={{ color: "red" }} className="TileText">COMING SOON</a>
             </div>
             <div className='Tile' style={{ backgroundColor: "rgb(44,44,60)" }}>
-                <a style={{ color: "white" }} className="TileText">KEBAB LOADER</a>
+                <a style={{ color: "white" }} className="TileText">KEBAB DATABASE</a>
                 <a style={{ color: "red" }} className="TileText">COMING SOON</a>
             </div>
 

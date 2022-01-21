@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import KebabStorageView from '../views/kebabStorageView'
 import mime from 'mime'
 
 function KebabStoragePresenter(props) {
+
+  const navigate = useNavigate();
 
   const [list, setList] = useState([])
   const [path, setPath] = useState("/")
   const [selectedFile, setSelectedFile] = useState(null)
 
   useEffect(() => {
+
+    if (props.model.username === "" || props.model.password === "") { navigate("/project-kebab/login/"); return; }
 
     props.model.connection.on("gotDir", (value) => {
       if (!value) { return }
@@ -47,6 +52,7 @@ function KebabStoragePresenter(props) {
     return () => {
       props.model.connection.off('gotFiles');
       props.model.connection.off('gotFile');
+      props.model.connection.off('gotDirError');
     }
   }, [])
 

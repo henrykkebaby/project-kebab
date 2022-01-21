@@ -1,9 +1,13 @@
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { io } from "socket.io-client"
+import { io } from "socket.io-client";
+import { useCookies } from "react-cookie";
+
 
 import Model from "./models/model";
 import Index from './presenters/indexPresenter';
 import KebabStorage from './presenters/kebabStoragePresenter';
+import Login from './presenters/loginPresenter';
 import Appbar from "./presenters/appbarPresenter";
 
 const model = new Model();
@@ -15,8 +19,27 @@ model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 //npm run deploy  -- deploy to github pages
 //npm start
 
-
 function App() {
+  const [cookies, setCookie] = useCookies(["username", "password"]);
+  if (cookies.username !== "" || cookies.password !== "") {
+    model.setAuth(cookies.username, cookies.password);
+    model.connection.emit("credentials", cookies.username, cookies.password);
+  }
+
+  /*
+  const handleContextMenu = (event) => {
+    event.preventDefault();
+    console.log('Right Click at X:', event.pageX, "Y:", event.pageY);
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('contextmenu', handleContextMenu);
+
+    return () => {
+      window.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
+  */
 
   return (
 
@@ -36,10 +59,10 @@ function App() {
         </div>
       } />
 
-      <Route path="/kebabstorage/" element={
+      <Route path="/project-kebab/login/" element={
         <div>
           <Appbar model={model} />
-          <KebabStorage model={model} />
+          <Login model={model} />
         </div>
       } />
 

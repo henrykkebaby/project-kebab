@@ -1,9 +1,27 @@
 class Model {
 
-    constructor(observers = [], connection = null, connectionStatus = "red") {
+    constructor(observers = [], connection = null, connectionStatus = "red", username = "", password = "") {
         this.observers = observers;
         this.connection = connection;
         this.connectionStatus = connectionStatus;
+        this.username = username;
+        this.password = password;
+    }
+
+    setUsername(username) {
+        this.username = username;
+        this.notifyObservers();
+    }
+
+    setPassword(password) {
+        this.password = password;
+        this.notifyObservers();
+    }
+
+    setAuth(username, password) {
+        this.username = username;
+        this.password = password;
+        this.notifyObservers();
     }
 
     setConnection(newConnection) {
