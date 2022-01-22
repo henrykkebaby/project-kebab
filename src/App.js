@@ -10,9 +10,13 @@ import Login from './presenters/loginPresenter';
 import Appbar from "./presenters/appbarPresenter";
 
 const model = new Model();
+
 model.setConnection(io(process.env.REACT_APP_SERVERIP));
 //model.setConnection(io("http://localhost:3024"));
-model.connection.on("error", () => { console.log("ERROR") })
+
+model.connection.on('socketError', (err) => console.error(err))
+model.connection.on('error', (err) => console.error(err))
+
 model.connection.on("connect", () => { model.setConnectionStatus("green") })
 model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 
