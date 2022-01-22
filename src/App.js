@@ -23,9 +23,13 @@ function App() {
 
   const [cookies, setCookie] = useCookies(["username", "password"]);
   model.assignCookie(setCookie)
-  if (cookies.username !== "" || cookies.password !== "") {
+  if (cookies.username && cookies.password && (cookies.username !== "" || cookies.password !== "")) {
     model.setAuth(cookies.username, cookies.password);
     model.connection.emit("credentials", cookies.username, cookies.password);
+  } else {
+    props.model.setAuth("", "");
+    props.model.setCookie("username", "")
+    props.model.setCookie("password", "")
   }
 
   const navigate = useNavigate()
