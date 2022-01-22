@@ -1,37 +1,35 @@
 class Model {
 
-    constructor(observers = [], connection = null, connectionStatus = "red", username = "", password = "", cookie) {
+    constructor(observers = [], connection = null, connectionStatus = "red", username = null) {
         this.observers = observers;
         this.connection = connection;
         this.connectionStatus = connectionStatus;
         this.username = username;
-        this.password = password;
-        this.cookie = cookie;
     }
 
-    assignCookie(cookie) {
+    assignCookies(cookie, setCookie, remCookie) {
         this.cookie = cookie
-    }
+        this.setCookie = setCookie
+        this.remCookie = remCookie
 
-    setCookie(arg1, arg2) {
-        this.cookie(arg1, arg2, {
-            path: "/"
-        });
-    }
+        if (cookie.username) { this.username = cookie.username }
 
-    setUsername(username) {
-        this.username = username;
-        this.notifyObservers();
-    }
-
-    setPassword(password) {
-        this.password = password;
         this.notifyObservers();
     }
 
     setAuth(username, password) {
-        this.username = username;
-        this.password = password;
+        this.setCookie("username", username, { path: "/" });
+        this.setCookie("password", password, { path: "/" });
+        this.username = username
+
+        this.notifyObservers();
+    }
+
+    remAuth() {
+        this.remCookie("username", { path: '/' })
+        this.remCookie("password", { path: '/' })
+        this.username = null
+
         this.notifyObservers();
     }
 

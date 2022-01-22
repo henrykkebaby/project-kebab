@@ -7,29 +7,27 @@ function LoginPresenter(props) {
     const [failed, setFailed] = useState(false)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [auth, setAuth] = useState(false)
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        props.model.connection.on("validation", (valid) => {
-            if (valid) {
-                navigate("/project-kebab/");
-            } else {
-                props.model.setAuth("", "");
-                props.model.setCookie("username", "")
-                props.model.setCookie("password", "")
-                setFailed(true)
-            }
-        })
+        props.model.connection.on("validation", (valid) => { if (valid) { setAuth(true) } else { setFailed(true) } })
         return () => { props.model.connection.off('validation'); }
     }, [])
+
+    useEffect(() => {
+        if (auth) {
+            sha256(password).then((promise) => {
+                props.model.setAuth(username, promise);
+                navigate("/project-kebab/");
+            })
+        }
+    }, [auth, username, password])
 
     function submitter() {
         sha256(password).then((promise) => {
             props.model.connection.emit("credentials", username, promise);
-            props.model.setAuth(username, promise);
-            props.model.setCookie("username", username)
-            props.model.setCookie("password", promise)
         })
     }
 

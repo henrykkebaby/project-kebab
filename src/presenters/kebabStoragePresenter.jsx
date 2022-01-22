@@ -13,7 +13,7 @@ function KebabStoragePresenter(props) {
 
   useEffect(() => {
 
-    if (props.model.username === "" || props.model.password === "") { navigate("/project-kebab/login/"); return; }
+    if (props.model.username === null) { navigate("/project-kebab/login/"); return; }
 
     props.model.connection.on("gotDir", (value) => {
       if (!value) { return }

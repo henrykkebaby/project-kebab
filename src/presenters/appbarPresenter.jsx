@@ -6,21 +6,21 @@ function AppbarPresenter(props) {
 
   const navigate = useNavigate();
   const [connectionStatus, setConnectionStatus] = useState(props.model.connectionStatus);
+  const [username, setUsername] = useState(null)
 
   useEffect(() => {
     props.model.addObserver(() => { setConnectionStatus(props.model.connectionStatus) })
+    props.model.addObserver(() => { setUsername(props.model.username) })
 
     return () => {
       props.model.removeObserver(() => { setConnectionStatus(props.model.connectionStatus) })
+      props.model.removeObserver(() => { setUsername(props.model.username) })
     }
   }, [])
 
   function logout() {
     props.model.connection.emit("logout");
-    props.model.setAuth("", "");
-
-    props.model.setCookie("username", "")
-    props.model.setCookie("password", "")
+    props.model.remAuth();
 
     navigate("/project-kebab/")
   }
@@ -28,7 +28,7 @@ function AppbarPresenter(props) {
   return <AppbarView
     navigate={navigate}
     connectionStatus={connectionStatus}
-    model={props.model}
+    username={username}
     logout={logout}
   />
 

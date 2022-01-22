@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { io } from "socket.io-client";
 import { useCookies } from "react-cookie";
 
@@ -8,7 +8,6 @@ import Index from './presenters/indexPresenter';
 import KebabStorage from './presenters/kebabStoragePresenter';
 import Login from './presenters/loginPresenter';
 import Appbar from "./presenters/appbarPresenter";
-import Contextmenu from './components/contextmenu';
 
 const model = new Model();
 model.setConnection(io(process.env.REACT_APP_SERVERIP));
@@ -21,80 +20,39 @@ model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 
 function App() {
 
-  const [cookies, setCookie] = useCookies(["username", "password"]);
-  model.assignCookie(setCookie)
-  if (cookies.username && cookies.password && (cookies.username !== "" || cookies.password !== "")) {
-    model.setAuth(cookies.username, cookies.password);
-    model.connection.emit("credentials", cookies.username, cookies.password);
-  } else {
-    props.model.setAuth("", "");
-    props.model.setCookie("username", "")
-    props.model.setCookie("password", "")
-  }
+  const [cookie, setCookie, remCookie] = useCookies(["username", "password"]);
 
-  const navigate = useNavigate()
-  useEffect(() => {
-    navigate("/project-kebab/")
-  }, [])
-
-  /*
-
-
-  const [posX, setPosX] = useState(0);
-  const [posY, setPosY] = useState(0);
-  const handleContextMenu = (event) => {
-    event.preventDefault();
-    setPosX(event.pageX)
-    setPosY(event.pageY)
-    console.log('Right Click at X:', event.pageX, "Y:", event.pageY);
-  };
-  React.useEffect(() => {
-    window.addEventListener('contextmenu', handleContextMenu);
-    return () => {
-      window.removeEventListener('contextmenu', handleContextMenu);
-    };
-  }, []);
-  */
+  if (!model.cookie) { model.assignCookies(cookie, setCookie, remCookie); }
+  if (cookie.username && cookie.password) { model.connection.emit("credentials", cookie.username, cookie.password); }
 
   return (
+    <div>
+      <Appbar model={model} />
+      <Routes>
 
-    <Routes>
-
-      <Route path="/" element={
-        <div>
-          <Appbar model={model} />
+        <Route path="/" element={
           <Index model={model} />
-        </div>
-      } />
+        } />
 
-      <Route path="/project-kebab/" element={
-        <div>
-          <Appbar model={model} />
+        <Route path="/project-kebab/" element={
           <Index model={model} />
-        </div>
-      } />
+        } />
 
-      <Route path="/project-kebab/login/" element={
-        <div>
-          <Appbar model={model} />
+        <Route path="/project-kebab/login/" element={
           <Login model={model} />
-        </div>
-      } />
+        } />
 
-      <Route path="/project-kebab/kebabstorage/" element={
-        <div>
-          <Appbar model={model} />
+        <Route path="/project-kebab/kebabstorage/" element={
           <KebabStorage model={model} />
-        </div>
-      } />
+        } />
 
-      <Route path="*" element={
-        <div>
-          <text>Not Found</text>
-        </div>
-      } />
+        <Route path="*" element={
+          <div>Not Found</div>
+        } />
 
-    </Routes>
+      </Routes>
+    </div>
+
 
   );
 
