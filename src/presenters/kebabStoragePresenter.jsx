@@ -151,7 +151,7 @@ function KebabStoragePresenter(props) {
     })
   }
 
-  function handleClick(item, element) {
+  function handleClick(item) {
     if (item.includes(".")) { setSelectedFile(item) }
     else { setSelectedFile(item) }
 
@@ -159,7 +159,7 @@ function KebabStoragePresenter(props) {
   }
 
   function handleDoubleClick(item) {
-    if (item.includes(".")) { getFile(item) }
+    if (item.includes(".")) { openFile(item) }
     else { setSelectedFile(null); addPath(item); }
   }
 
