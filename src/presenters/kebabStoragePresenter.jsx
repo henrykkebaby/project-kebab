@@ -11,6 +11,23 @@ function KebabStoragePresenter(props) {
   const [path, setPath] = useState("/")
   const [selectedFile, setSelectedFile] = useState(null)
 
+  function handleDrop(e) {
+    if (!e.dataTransfer.files) { return; }
+    fileUpload(e.dataTransfer.files)
+    e.preventDefault();
+  }
+
+  useEffect(() => {
+    window.addEventListener("dragover", (e) => e.preventDefault())
+    window.addEventListener("drop", (e) => handleDrop(e))
+
+    return () => {
+      window.removeEventListener("dragover", (e) => e.preventDefault())
+      window.removeEventListener("drop", (e) => handleDrop(e))
+    }
+  }, [])
+
+
   useEffect(() => {
 
     if (props.model.username === null) { navigate("/project-kebab/login/"); return; }
