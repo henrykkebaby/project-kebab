@@ -35,7 +35,7 @@ function KebabStorageView(props) {
 
                     )
                 })}
-                {props.list.length === 0 ? <h2>This Directory Is Empty</h2> : ""}
+                {props.list.length === 0 ? <h2 style={{ userSelect: "none", margin: "20px" }}>This Directory Is Empty</h2> : ""}
             </div>
             <div style={{ flex: "1", border: "1px lightgrey solid", float: "right", minWidth: "500px", margin: "15px", padding: "10px" }}>
                 <h3 style={{ wordWrap: "break-word" }}>{props.path}</h3>
