@@ -9,6 +9,8 @@ import KebabStorage from './presenters/kebabStoragePresenter';
 import Login from './presenters/loginPresenter';
 import Appbar from "./presenters/appbarPresenter";
 
+document.title = "PROJECT KEBAB"
+
 const model = new Model();
 
 if (window.location.href.includes("localhost"))
