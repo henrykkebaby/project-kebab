@@ -94,7 +94,9 @@ function KebabStoragePresenter(props) {
   }
 
   function openFile(file) {
-    props.model.connection.emit("getFileOpen", (path + file));
+    if (file.includes("."))
+      props.model.connection.emit("getFileOpen", (path + file));
+    else { setSelectedFile(null); addPath(file); }
   }
 
   function remFile(file) {

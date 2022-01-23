@@ -48,8 +48,9 @@ function KebabStorageView(props) {
                     {props.selectedFile ?
                         <div>
                             <h2>{props.selectedFile}</h2>
+                            {props.selectedFile.includes(".") ? <h3>file</h3> : <h3>folder</h3>}
                             <div style={{ flexDirection: "row", alignContent: "center" }}>
-                                {props.selectedFile.includes(".") ? <img onClick={() => props.openFile(props.selectedFile)} height={"50px"} src={openFileIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} /> : ""}
+                                <img onClick={() => props.openFile(props.selectedFile)} height={"50px"} src={openFileIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
                                 {props.selectedFile.includes(".") ? <img onClick={() => props.getFile(props.selectedFile)} height={"50px"} src={downloadIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} /> : ""}
                                 <img onClick={() => { props.remFile(props.selectedFile); props.setSelectedFile(null) }} height={"50px"} src={trashIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
                             </div>
