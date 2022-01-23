@@ -11,8 +11,10 @@ import Appbar from "./presenters/appbarPresenter";
 
 const model = new Model();
 
-model.setConnection(io(process.env.REACT_APP_SERVERIP));
-//model.setConnection(io("http://localhost:3024"));
+if (process.env.REACT_APP_SERVERIP)
+  model.setConnection(io(process.env.REACT_APP_SERVERIP));
+else
+  model.setConnection(io("kebabdatabase.servebeer.com"));
 
 model.connection.on("connect", () => { model.setConnectionStatus("green") })
 model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
@@ -29,7 +31,9 @@ function App() {
 
   return (
     <div>
+
       <Appbar model={model} />
+
       <Routes>
 
         <Route path="/" element={
@@ -53,8 +57,8 @@ function App() {
         } />
 
       </Routes>
-    </div>
 
+    </div>
 
   );
 
