@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { io } from "socket.io-client";
 import { useCookies } from "react-cookie";
@@ -8,8 +8,6 @@ import Index from './presenters/indexPresenter';
 import KebabStorage from './presenters/kebabStoragePresenter';
 import Login from './presenters/loginPresenter';
 import Appbar from "./presenters/appbarPresenter";
-
-document.title = "PROJECT KEBAB"
 
 const model = new Model();
 

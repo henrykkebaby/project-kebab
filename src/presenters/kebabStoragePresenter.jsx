@@ -8,6 +8,7 @@ function KebabStoragePresenter(props) {
   const navigate = useNavigate();
 
   const [list, setList] = useState([])
+  const [listLoading, setListLoading] = useState(false)
   const [path, setPath] = useState("/")
   const [selectedFile, setSelectedFile] = useState(null)
 
@@ -43,10 +44,12 @@ function KebabStoragePresenter(props) {
         if (element.includes(".")) { fileList.push(element) }
         else { folderList.push(element) }
       });
+      setListLoading(false)
       setList(folderList.concat(fileList))
     })
 
     props.model.connection.on("gotDirError", () => {
+      setListLoading(false)
       setSelectedFile(null)
       setList([])
       setPath("/")
@@ -86,6 +89,7 @@ function KebabStoragePresenter(props) {
   }, [])
 
   function getDir(path) {
+    setListLoading(true)
     props.model.connection.emit("getDir", path);
   }
 
@@ -182,6 +186,7 @@ function KebabStoragePresenter(props) {
       setSelectedFile={setSelectedFile}
       handleClick={handleClick}
       handleDoubleClick={handleDoubleClick}
+      listLoading={listLoading}
     />
   );
 }
