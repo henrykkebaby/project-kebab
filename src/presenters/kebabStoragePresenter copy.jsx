@@ -38,7 +38,7 @@ function KebabStoragePresenter(props) {
 
     props.model.connection.on("gotDir", (value) => {
       setIsListLoading(false);
-      setIsLoading(false);
+      isLoading(false);
       if (!value) { return }
       if (value === null) { return }
       var folderList = []
@@ -52,7 +52,7 @@ function KebabStoragePresenter(props) {
 
     props.model.connection.on("gotDirError", () => {
       setIsListLoading(false);
-      setIsLoading(false);
+      isLoading(false);
       setSelectedFile(null)
       setList([])
       setPath("/")
@@ -62,7 +62,7 @@ function KebabStoragePresenter(props) {
 
     props.model.connection.on("gotFile", (value, name) => {
       setIsListLoading(false);
-      setIsLoading(false);
+      isLoading(false);
       var dataURL = mime.getType(name)
       const linkSource = `data:${dataURL};base64,${value}`;
       const downloadLink = document.createElement("a");
@@ -73,7 +73,7 @@ function KebabStoragePresenter(props) {
 
     props.model.connection.on("gotFileOpen", (value, name) => {
       setIsListLoading(false);
-      setIsLoading(false);
+      isLoading(false);
       var dataURL = mime.getType(name)
       const linkSource = `data:${dataURL};base64,${value}`;
 

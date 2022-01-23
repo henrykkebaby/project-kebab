@@ -16,7 +16,7 @@ function AppbarPresenter(props) {
       props.model.removeObserver(() => { setConnectionStatus(props.model.connectionStatus) })
       props.model.removeObserver(() => { setUsername(props.model.username) })
     }
-  }, [])
+  }, [props.model])
 
   function logout() {
     props.model.connection.emit("logout");
