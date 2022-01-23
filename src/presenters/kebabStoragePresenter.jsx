@@ -11,6 +11,9 @@ function KebabStoragePresenter(props) {
   const [path, setPath] = useState("/")
   const [selectedFile, setSelectedFile] = useState(null)
 
+  function handleDrag(e) {
+    e.preventDefault()
+  }
   function handleDrop(e) {
     if (!e.dataTransfer.files) { return; }
     fileUpload(e.dataTransfer.files)
@@ -18,14 +21,13 @@ function KebabStoragePresenter(props) {
   }
 
   useEffect(() => {
-    window.addEventListener("dragover", (e) => e.preventDefault())
-    window.addEventListener("drop", (e) => handleDrop(e))
-
+    window.addEventListener("dragover", handleDrag)
+    window.addEventListener("drop", handleDrop)
     return () => {
-      window.removeEventListener("dragover", (e) => e.preventDefault())
-      window.removeEventListener("drop", (e) => handleDrop(e))
+      window.removeEventListener("dragover", handleDrag)
+      window.removeEventListener("drop", handleDrop)
     }
-  }, [])
+  }, [path])
 
 
   useEffect(() => {
@@ -53,15 +55,24 @@ function KebabStoragePresenter(props) {
     })
 
     props.model.connection.on("gotFile", (value, name) => {
-
       var dataURL = mime.getType(name)
-
       const linkSource = `data:${dataURL};base64,${value}`;
       const downloadLink = document.createElement("a");
       downloadLink.href = linkSource;
       downloadLink.download = name;
       downloadLink.click();
+    })
 
+    props.model.connection.on("gotFileOpen", (value, name) => {
+      var dataURL = mime.getType(name)
+      const linkSource = `data:${dataURL};base64,${value}`;
+
+      fetch(linkSource)
+        .then(response => response.blob())
+        .then(data => {
+          var fileURL = URL.createObjectURL(data);
+          window.open(fileURL)
+        })
     })
 
     getDir("/")
@@ -69,6 +80,7 @@ function KebabStoragePresenter(props) {
     return () => {
       props.model.connection.off('gotFiles');
       props.model.connection.off('gotFile');
+      props.model.connection.off('gotFileOpen');
       props.model.connection.off('gotDirError');
     }
   }, [])
@@ -81,8 +93,15 @@ function KebabStoragePresenter(props) {
     props.model.connection.emit("getFile", (path + file));
   }
 
+  function openFile(file) {
+    props.model.connection.emit("getFileOpen", (path + file));
+  }
+
   function remFile(file) {
-    props.model.connection.emit("remFile", (path + file), path);
+    if (file.includes("."))
+      props.model.connection.emit("remFile", (path + file), path);
+    else
+      remFolder(file)
   }
 
   function remFolder(folder) {
@@ -120,7 +139,6 @@ function KebabStoragePresenter(props) {
 
   function fileUpload(uploadFile) {
     if (uploadFile == null) { return; }
-
     [...uploadFile].forEach(file => {
       let baseURL = "";
       let reader = new FileReader();
@@ -153,6 +171,7 @@ function KebabStoragePresenter(props) {
       addPath={addPath}
       subPath={subPath}
       getFile={getFile}
+      openFile={openFile}
       remFile={remFile}
       remFolder={remFolder}
       createFolder={createFolder}

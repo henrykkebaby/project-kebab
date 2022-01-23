@@ -5,13 +5,14 @@ import trashIcon from "../files/trashIcon.png"
 import folderIcon from "../files/folderIcon.png"
 import fileIcon from "../files/fileIcon.jpg"
 import upArrow from "../files/upArrow.png"
+import openFileIcon from "../files/openFileIcon.png"
 
 function KebabStorageView(props) {
 
     return (
         <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "60px", left: "0px", right: "0px" }}>
             <div style={{ flexDirection: "column", flex: "3" }}>
-                {props.path == "/" ? ""
+                {props.path === "/" ? ""
                     :
                     <div onClick={() => { props.subPath(); props.setSelectedFile(null) }} style={{ height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", display: "flex", flexDirection: "row", cursor: "pointer" }}>
                         <img src={upArrow} height={"40px"} style={{ marginLeft: "10px", marginTop: "5px", userSelect: "none" }} />
@@ -48,6 +49,7 @@ function KebabStorageView(props) {
                         <div>
                             <h2>{props.selectedFile}</h2>
                             <div style={{ flexDirection: "row", alignContent: "center" }}>
+                                {props.selectedFile.includes(".") ? <img onClick={() => props.openFile(props.selectedFile)} height={"50px"} src={openFileIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} /> : ""}
                                 {props.selectedFile.includes(".") ? <img onClick={() => props.getFile(props.selectedFile)} height={"50px"} src={downloadIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} /> : ""}
                                 <img onClick={() => { props.remFile(props.selectedFile); props.setSelectedFile(null) }} height={"50px"} src={trashIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
                             </div>
