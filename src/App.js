@@ -11,7 +11,7 @@ import Appbar from "./presenters/appbarPresenter";
 
 const model = new Model();
 
-if (process.env.REACT_APP_SERVERIP)
+if (window.location.href.includes("localhost"))
   model.setConnection(io(process.env.REACT_APP_SERVERIP));
 else
   model.setConnection(io("kebabdatabase.servebeer.com"));
