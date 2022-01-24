@@ -79,19 +79,17 @@ function KebabStoragePresenter(props) {
     })
 
     props.model.connection.on("gotFile", (value, name) => {
-      setIsListLoading(false);
-      setIsLoading(false);
       var dataURL = mime.getType(name)
       const linkSource = `data:${dataURL};base64,${value}`;
       const downloadLink = document.createElement("a");
       downloadLink.href = linkSource;
       downloadLink.download = name;
       downloadLink.click();
+      setIsListLoading(false);
+      setIsLoading(false);
     })
 
     props.model.connection.on("gotFileOpen", (value, name) => {
-      setIsListLoading(false);
-      setIsLoading(false);
       var dataURL = mime.getType(name)
       const linkSource = `data:${dataURL};base64,${value}`;
 
@@ -99,7 +97,9 @@ function KebabStoragePresenter(props) {
         .then(response => response.blob())
         .then(data => {
           var fileURL = URL.createObjectURL(data);
-          window.open(fileURL)
+          window.open(fileURL);
+          setIsListLoading(false);
+          setIsLoading(false);
         })
     })
 
@@ -187,6 +187,8 @@ function KebabStoragePresenter(props) {
   }
 
   function handleClick(item) {
+    setIsListLoading(false);
+    setIsLoading(false);
     if (item.includes(".")) { setSelectedFile(item) }
     else { setSelectedFile(item) }
 
@@ -194,6 +196,8 @@ function KebabStoragePresenter(props) {
   }
 
   function handleDoubleClick(item) {
+    setIsListLoading(false);
+    setIsLoading(false);
     if (item.includes(".")) { openFile(item) }
     else { setSelectedFile(null); addPath(item); }
   }
