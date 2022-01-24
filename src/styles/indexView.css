@@ -17,13 +17,13 @@
 }
 
 .TileText {
-  font-size: 29px; 
+  font-size: 27px; 
   font-weight: bold; 
   user-select: none;
   word-wrap: break-word;
 }
 
 .TileImage {
-  height: 3cm;
+  height: 4cm;
   float: right;
 }
