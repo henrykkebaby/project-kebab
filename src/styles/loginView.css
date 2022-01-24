@@ -1,0 +1,38 @@
+.LoginContainer { 
+    position: absolute; 
+    top: 1.5cm;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(250, 250, 250);
+}
+
+.Form {
+  position: absolute; 
+  border: 1px solid black; 
+  height: 400px; 
+  width: 300px; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Input {
+  height: 1cm;
+  font-size: 24px;
+}
+
+.Text {
+  font-size: 24px;
+}
+
+.Button {
+  height: 1cm;
+}
+
+.Red {
+  color: red;
+}

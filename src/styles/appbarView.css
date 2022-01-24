@@ -1,0 +1,29 @@
+.AppbarContainer {
+  height: 1.5cm;
+  background-color: rgb(250, 218, 77);
+  display: flex;
+  align-items: center;
+}
+
+.AppbarFont {
+  margin-right: 0.3cm;
+  margin-left: 0.3cm;
+  font-size: 29px;
+  font-weight: bold; 
+  user-select: none;
+}
+
+.Clickable {
+  cursor: pointer;
+}
+
+.ConnectionIndicator {
+  margin-right: 0.3cm;
+  height: 20px; 
+  width: 20px;
+  border-radius: 50%;
+}
+
+.RightAlign {
+  margin-left: auto;
+}

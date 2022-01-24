@@ -1,17 +1,21 @@
 import React from 'react';
+import "../styles/appbarView.css";
 import lockIcon from "../files/lockIcon.png"
 
 function AppbarView(props) {
     return (
-        <div className='Appbar'>
-            <a onClick={() => props.navigate("/project-kebab/")} style={{ fontSize: "30px", fontWeight: "bold", userSelect: "none", cursor: "pointer" }}> PROJECT KEBAB</a>
-            <div style={{ height: "20px", width: "20px", backgroundColor: props.connectionStatus, borderRadius: "50%", display: "inline-block", float: "right", marginTop: "10px", marginRight: "10px" }}></div>
+        <div className='AppbarContainer'>
+            <a className='Clickable AppbarFont' onClick={() => props.navigate("/project-kebab/")}> PROJECT KEBAB</a>
 
-            {props.username === null ?
-                <a onClick={() => props.navigate("/project-kebab/login/")} style={{ color: "red", fontSize: "30px", fontWeight: "bold", userSelect: "none", cursor: "pointer", float: "right", marginRight: "40px" }}>LOGIN</a>
-                :
-                <a onClick={() => props.logout()} style={{ color: "green", fontSize: "30px", fontWeight: "bold", userSelect: "none", cursor: "pointer", float: "right", marginRight: "40px" }}>{props.username} <img src={lockIcon} height="25px" /></a>
-            }
+            <div className='AppbarContainer RightAlign'>
+                {props.username === null ?
+                    <a onClick={() => props.navigate("/project-kebab/login/")} className='Clickable AppbarFont Red'>LOGIN</a>
+                    :
+                    <a onClick={() => props.logout()} className='Clickable AppbarFont Green'>{props.username} <img src={lockIcon} height="25px" /></a>
+                }
+
+                <div className='ConnectionIndicator' style={{ backgroundColor: props.connectionStatus }}></div>
+            </div>
 
         </div >
     )

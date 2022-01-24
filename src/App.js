@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { io } from "socket.io-client";
 
+import "./styles/styles.css"
 import Model from "./models/model";
 import Index from './presenters/indexPresenter';
 import KebabStorage from './presenters/kebabStoragePresenter';

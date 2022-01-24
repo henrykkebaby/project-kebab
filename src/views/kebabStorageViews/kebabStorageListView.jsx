@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../styles/styles.css"
+//import "../../styles/styles.css"
 import folderIcon from "../../files/folderIcon.png"
 import fileIcon from "../../files/fileIcon.jpg"
 import upArrow from "../../files/upArrow.png"
