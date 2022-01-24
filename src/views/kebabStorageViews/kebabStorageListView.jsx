@@ -8,11 +8,12 @@ import spinnerIcon from "../../files/spinnerIcon.jpg"
 function KebabStorageListView(props) {
     return (
         <div style={{ flexDirection: "column", flex: "3" }}>
-            {props.path === "/" ? ""
-                :
+
+            {props.path === "/" && !props.isListLoading &&
                 <div onClick={() => { props.subPath(); props.setSelectedFile(null) }} style={{ height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", display: "flex", flexDirection: "row", cursor: "pointer" }}>
                     <img src={upArrow} height={"40px"} style={{ marginLeft: "10px", marginTop: "5px", userSelect: "none" }} />
-                </div>}
+                </div>
+            }
 
             {props.isListLoading ?
 
