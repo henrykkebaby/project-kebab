@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import KebabStorageView from '../views/kebabStorageView'
+import KebabStorageListView from '../views/kebabStorageViews/kebabStorageListView'
+import KebabStorageMenuView from '../views/kebabStorageViews/kebabStorageMenuView'
 import mime from 'mime'
 
 function KebabStoragePresenter(props) {
@@ -12,6 +13,7 @@ function KebabStoragePresenter(props) {
   const [isListLoading, setIsListLoading] = useState(true)
   const [path, setPath] = useState("/")
   const [selectedFile, setSelectedFile] = useState(null)
+  const [connectionStatus, setConnectionStatus] = useState(props.model.connectionStatus);
 
   function handleDrag(e) {
     e.preventDefault()
@@ -31,6 +33,22 @@ function KebabStoragePresenter(props) {
     }
   }, [path, handleDrop])
 
+  useEffect(() => {
+    if (connectionStatus === "red") {
+      setIsLoading(false)
+      setIsListLoading(false)
+      alert("Connection to server lost...")
+      navigate("/project-kebab/")
+    }
+  }, [connectionStatus])
+
+  useEffect(() => {
+    props.model.addObserver(() => { setConnectionStatus(props.model.connectionStatus) })
+
+    return () => {
+      props.model.removeObserver(() => { setConnectionStatus(props.model.connectionStatus) })
+    }
+  }, [props.model])
 
   useEffect(() => {
 
@@ -181,25 +199,27 @@ function KebabStoragePresenter(props) {
   }
 
   return (
-    <KebabStorageView
-      model={props.model}
-      list={list}
-      path={path}
-      addPath={addPath}
-      subPath={subPath}
-      getFile={getFile}
-      openFile={openFile}
-      remFile={remFile}
-      remFolder={remFolder}
-      createFolder={createFolder}
-      fileUpload={fileUpload}
-      selectedFile={selectedFile}
-      setSelectedFile={setSelectedFile}
-      handleClick={handleClick}
-      handleDoubleClick={handleDoubleClick}
-      isLoading={isLoading}
-      isListLoading={isListLoading}
-    />
+    <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "60px", left: "0px", right: "0px" }}>
+      <KebabStorageListView
+        isListLoading={isListLoading}
+        path={path} list={list}
+        subPath={subPath}
+        setSelectedFile={setSelectedFile}
+        handleClick={handleClick}
+        handleDoubleClick={handleDoubleClick}
+      />
+      <KebabStorageMenuView
+        path={path}
+        getFile={getFile}
+        openFile={openFile}
+        remFile={remFile}
+        createFolder={createFolder}
+        fileUpload={fileUpload}
+        selectedFile={selectedFile}
+        setSelectedFile={setSelectedFile}
+        isLoading={isLoading}
+      />
+    </div>
   );
 }
 
