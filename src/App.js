@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { io } from "socket.io-client";
-import { useCookies } from "react-cookie";
 
 import Model from "./models/model";
 import Index from './presenters/indexPresenter';
@@ -23,11 +22,6 @@ model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 //npm start
 
 function App() {
-
-  const [cookie, setCookie, remCookie] = useCookies(["username", "password"]);
-
-  if (!model.cookie) { model.assignCookies(cookie, setCookie, remCookie); }
-  if (cookie.username && cookie.password) { model.connection.emit("credentials", cookie.username, cookie.password); }
 
   return (
     <div>
