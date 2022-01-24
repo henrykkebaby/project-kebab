@@ -14,10 +14,11 @@ function LoginPresenter(props) {
     useEffect(() => {
         props.model.connection.on("validation", (valid) => { if (valid) { setAuth(true) } else { setFailed(true) } })
         return () => { props.model.connection.off('validation'); }
-    }, [])
+    }, [props.model])
 
     useEffect(() => {
         if (auth) {
+            setAuth(false)
             sha256(password).then((promise) => {
                 props.model.setAuth(username, promise);
                 navigate("/project-kebab/");
@@ -26,6 +27,7 @@ function LoginPresenter(props) {
     }, [auth, username, password])
 
     function submitter() {
+        setFailed(false)
         sha256(password).then((promise) => {
             props.model.connection.emit("credentials", username, promise);
         })

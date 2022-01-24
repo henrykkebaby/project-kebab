@@ -29,11 +29,14 @@ function AppbarPresenter(props) {
     }
   }, [props.model, cookie, setCookie, remCookie])
 
-  function logout() {
-    props.model.connection.emit("logout");
+  async function logout() {
     props.model.remAuth();
 
-    navigate("/project-kebab/")
+    setTimeout(function () {
+      props.model.connection.emit("logout");
+      navigate("/project-kebab/")
+    }, 200);
+
   }
 
   return <AppbarView
