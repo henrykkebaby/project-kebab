@@ -38,7 +38,7 @@ function KebabStorageListView(props) {
                 })
 
             }
-            {(!props.isListLoading && props.list.length === 0) && <h2 className='KebabStorageListText'>This Directory Is Empty</h2>}
+            {(!props.isListLoading && props.list.length === 0) && <h2 className='KebabStorageListText' style={{ textAlign: "center" }}>This Directory Is Empty</h2>}
             <div style={{ height: "4cm" }}></div>
         </div >
     )
