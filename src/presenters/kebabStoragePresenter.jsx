@@ -4,6 +4,8 @@ import KebabStorageListView from '../views/kebabStorageViews/kebabStorageListVie
 import KebabStorageMenuView from '../views/kebabStorageViews/kebabStorageMenuView'
 import mime from 'mime'
 
+import openFileIcon from "../files/openFileIcon.png"
+
 function KebabStoragePresenter(props) {
 
   const navigate = useNavigate();
@@ -216,6 +218,13 @@ function KebabStoragePresenter(props) {
   return (
     <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "1.5cm", left: "0px", right: "0px" }}>
 
+      {isMobile &&
+        <div style={{ position: "fixed", right: "1cm", bottom: "1cm" }}>
+          <input id="fileUploader" type="file" multiple="multiple" onChange={(e) => fileUpload(e.target.files)} style={{ display: "none" }} />
+          <label htmlFor="fileUploader" > <img src={openFileIcon} style={{ height: "2cm" }} /></label>
+        </div>
+      }
+
       <KebabStorageListView
         isMobile={isMobile}
         isListLoading={isListLoading}
@@ -225,6 +234,8 @@ function KebabStoragePresenter(props) {
         handleClick={handleClick}
         handleDoubleClick={handleDoubleClick}
       />
+
+
 
       {!isMobile &&
         <KebabStorageMenuView
