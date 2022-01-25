@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/project-kebab/static/css/main.2dd4ae20.css",
-    "main.js": "/project-kebab/static/js/main.be04be5a.js",
+    "main.css": "/project-kebab/static/css/main.61e50d8a.css",
+    "main.js": "/project-kebab/static/js/main.9bbab547.js",
     "static/js/787.4960fd22.chunk.js": "/project-kebab/static/js/787.4960fd22.chunk.js",
     "static/media/lockIcon.png": "/project-kebab/static/media/lockIcon.ec04aa1add7eae1d6302.png",
     "static/media/spinnerIcon.jpg": "/project-kebab/static/media/spinnerIcon.83cbdda8531fb57007e9.jpg",
     "static/media/trashIcon.png": "/project-kebab/static/media/trashIcon.5bcbeb7593a5548d605c.png",
     "index.html": "/project-kebab/index.html",
-    "main.2dd4ae20.css.map": "/project-kebab/static/css/main.2dd4ae20.css.map",
-    "main.be04be5a.js.map": "/project-kebab/static/js/main.be04be5a.js.map",
+    "main.61e50d8a.css.map": "/project-kebab/static/css/main.61e50d8a.css.map",
+    "main.9bbab547.js.map": "/project-kebab/static/js/main.9bbab547.js.map",
     "787.4960fd22.chunk.js.map": "/project-kebab/static/js/787.4960fd22.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2dd4ae20.css",
-    "static/js/main.be04be5a.js"
+    "static/css/main.61e50d8a.css",
+    "static/js/main.9bbab547.js"
   ]
 }
