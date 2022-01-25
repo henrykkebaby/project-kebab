@@ -150,8 +150,8 @@ function KebabStoragePresenter(props) {
 
   function createFolder() {
     var element = document.getElementById("folderInput")
-    if (element.value === null) return
-    if (element.value === "") return
+    if (element.value === null && element.value === "") { element = document.getElementById("folderInputMobile") }
+    if (element.value === null && element.value === "") return
     props.model.connection.emit("createFolder", path, element.value);
     element.value = null
   }
