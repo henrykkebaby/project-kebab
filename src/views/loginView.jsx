@@ -7,7 +7,7 @@ function LoginView(props) {
             <div className='Form'>
                 <h1>LOG IN_</h1>
                 <a className='Text'>Username:</a>
-                <input className='Input' id="usernameInput" type="text" onChange={(e) => props.setUsername(e.target.value)} />
+                <input className='Input' id="usernameInput" autoFocus type="text" onChange={(e) => props.setUsername(e.target.value)} onKeyPress={event => { if (event.key === 'Enter') { document.getElementById("passwordInput").focus() } }} />
                 <br />
                 <a className='Text'>Password:</a>
                 <input className='Input' id="passwordInput" type="password" onChange={(e) => props.setPassword(e.target.value)} onKeyPress={event => { if (event.key === 'Enter') { props.submitter() } }} />

@@ -8,6 +8,7 @@
 }
 
 .Form {
+  background-color: rgb(250, 250, 250);
   position: absolute; 
   border: 1px solid black; 
   height: 400px; 
@@ -31,8 +32,4 @@
 
 .Button {
   height: 1cm;
-}
-
-.Red {
-  color: red;
 }
