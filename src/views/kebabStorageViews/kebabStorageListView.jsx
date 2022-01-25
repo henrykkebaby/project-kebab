@@ -33,7 +33,7 @@ function KebabStorageListView(props) {
                         }
 
                         <h2 className='KebabStorageListText'>{item.toString()}</h2>
-                        {props.isMobile && <img className='KebabStorageListImage' onClick={(e) => { props.remFile(item.toString()); props.setSelectedFile(null); e.stopPropagation(); }} src={trashIcon} style={{ marginLeft: "auto" }} />}
+                        {props.isMobile && <img className='KebabStorageListImage' onClick={(e) => { props.remFile(item.toString()); props.setSelectedFile(null); e.stopPropagation(); }} src={trashIcon} style={{ marginLeft: "auto", marginRight: "0.1cm" }} />}
                     </div>
                 })
 

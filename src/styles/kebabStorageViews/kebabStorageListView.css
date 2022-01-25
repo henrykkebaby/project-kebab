@@ -25,4 +25,5 @@
     align-self: center;
     user-select: none; 
     font-size: calc(85% + 0.9vw);
+    word-break: break-all;
 }
