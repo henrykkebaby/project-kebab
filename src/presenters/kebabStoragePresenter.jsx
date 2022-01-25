@@ -177,6 +177,7 @@ function KebabStoragePresenter(props) {
   }
 
   function fileUpload(uploadFile) {
+    setIsLoading(true)
     if (uploadFile == null) { return; }
     [...uploadFile].forEach(file => {
       let baseURL = "";
