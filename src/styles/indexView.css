@@ -26,4 +26,5 @@
 .TileImage {
   height: 3cm;
   float: right;
+  user-select: none;
 }
