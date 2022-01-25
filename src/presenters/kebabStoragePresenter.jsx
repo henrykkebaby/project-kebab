@@ -231,17 +231,20 @@ function KebabStoragePresenter(props) {
   }
 
   function handleTouchStart(item) {
+    console.log("start")
     setLongPress(true)
     setTimeout(() => {
-      getFile(item)
+      if (longPressRef.current) { getFile(item) }
     }, 500);
   }
 
   function handleTouchEnd(e) {
+    console.log("end")
     setLongPress(false)
   }
 
   function handleTouchMove() {
+    console.log("drag")
     setLongPress(false)
   }
 
