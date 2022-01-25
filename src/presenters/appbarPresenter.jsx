@@ -30,6 +30,7 @@ function AppbarPresenter(props) {
   }, [props.model, cookie, setCookie, remCookie])
 
   async function logout() {
+
     props.model.remAuth();
 
     setTimeout(function () {
