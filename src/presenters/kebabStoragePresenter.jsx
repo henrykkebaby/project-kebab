@@ -128,6 +128,7 @@ function KebabStoragePresenter(props) {
   }
 
   function getFile(file) {
+    if (!file.includes(".")) { return; }
     setIsLoading(true)
     props.model.connection.emit("getFile", (path + file));
   }
