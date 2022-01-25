@@ -22,12 +22,16 @@ model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 //npm run deploy  -- deploy to github pages
 //npm start
 
+//window.navigator.userAgentData.platform
+//Windows
+//Android
+
 function App() {
 
   return (
 
     <div>
-      {window.navigator.userAgentData.platform}
+
       <Appbar model={model} />
 
       <Routes>

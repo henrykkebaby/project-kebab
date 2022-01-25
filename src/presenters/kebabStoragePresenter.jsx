@@ -215,22 +215,22 @@ function KebabStoragePresenter(props) {
         handleDoubleClick={handleDoubleClick}
       />
 
+      {window.navigator.userAgentData.platform === "Windows" &&
+        <KebabStorageMenuView
+          path={path}
+          getFile={getFile}
+          openFile={openFile}
+          remFile={remFile}
+          createFolder={createFolder}
+          fileUpload={fileUpload}
+          selectedFile={selectedFile}
+          setSelectedFile={setSelectedFile}
+          isLoading={isLoading}
+        />
+      }
+
     </div>
   );
 }
 
 export default KebabStoragePresenter;
-
-/*
-<KebabStorageMenuView
-        path={path}
-        getFile={getFile}
-        openFile={openFile}
-        remFile={remFile}
-        createFolder={createFolder}
-        fileUpload={fileUpload}
-        selectedFile={selectedFile}
-        setSelectedFile={setSelectedFile}
-        isLoading={isLoading}
-      />
-      */
