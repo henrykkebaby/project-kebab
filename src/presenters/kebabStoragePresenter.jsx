@@ -188,12 +188,12 @@ function KebabStoragePresenter(props) {
     })
   }
 
-  function handleClick(item) {
+  function handleClick(item, e) {
 
     setIsListLoading(false);
     setIsLoading(false);
 
-    if (isMobile) {
+    if (e.nativeEvent.pointerType === "touch") {
       if (item.includes(".")) { openFile(item) }
       else { setSelectedFile(null); addPath(item); }
       return;
@@ -203,12 +203,12 @@ function KebabStoragePresenter(props) {
 
   }
 
-  function handleDoubleClick(item) {
+  function handleDoubleClick(item, e) {
 
     setIsListLoading(false);
     setIsLoading(false);
 
-    if (isMobile) { return; }
+    if (e.nativeEvent.pointerType === "touch") { return; }
     if (item.includes(".")) { openFile(item) }
     else { setSelectedFile(null); addPath(item); }
   }

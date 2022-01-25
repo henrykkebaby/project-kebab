@@ -10,7 +10,7 @@ function IndexView(props) {
                 <a className="TileText" style={{ color: "black" }}>KEBAB STORAGE</a>
                 <img className='TileImage' src={kebabStorageLogo} />
             </div>
-            <div className='Tile' style={{ backgroundColor: "rgb(120,180,250)" }}>
+            <div className='Tile' style={{ backgroundColor: "rgb(120,180,250)" }} >
                 <a className="TileText" style={{ color: "black" }}>KEBAB TYPER</a>
                 <img className='TileImage' src={kebabTyperLogo} />
             </div>
