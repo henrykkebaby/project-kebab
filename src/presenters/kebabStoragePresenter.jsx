@@ -14,6 +14,7 @@ function KebabStoragePresenter(props) {
   const [path, setPath] = useState("/")
   const [selectedFile, setSelectedFile] = useState(null)
   const [connectionStatus, setConnectionStatus] = useState(props.model.connectionStatus);
+  const [isMobile, setIsMobile] = useState(window.navigator.userAgentData.platform === "Android");
 
   function handleDrag(e) {
     e.preventDefault()
@@ -204,7 +205,7 @@ function KebabStoragePresenter(props) {
   }
 
   return (
-    <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "60px", left: "0px", right: "0px" }}>
+    <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "1.5cm", left: "0px", right: "0px" }}>
 
       <KebabStorageListView
         isListLoading={isListLoading}
@@ -215,7 +216,7 @@ function KebabStoragePresenter(props) {
         handleDoubleClick={handleDoubleClick}
       />
 
-      {window.navigator.userAgentData.platform === "Windows" &&
+      {!isMobile &&
         <KebabStorageMenuView
           path={path}
           getFile={getFile}
