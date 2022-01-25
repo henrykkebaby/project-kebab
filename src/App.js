@@ -25,8 +25,9 @@ model.connection.on("disconnect", () => { model.setConnectionStatus("red") })
 function App() {
 
   return (
-    <div>
 
+    <div>
+      {window.navigator.userAgentData.platform}
       <Appbar model={model} />
 
       <Routes>

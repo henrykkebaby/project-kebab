@@ -25,6 +25,7 @@ function KebabStoragePresenter(props) {
   }
 
   useEffect(() => {
+
     window.addEventListener("dragover", handleDrag)
     window.addEventListener("drop", handleDrop)
     return () => {
@@ -213,8 +214,6 @@ function KebabStoragePresenter(props) {
         handleClick={handleClick}
         handleDoubleClick={handleDoubleClick}
       />
-
-
 
     </div>
   );

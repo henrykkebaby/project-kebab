@@ -1,5 +1,6 @@
 .KebabStorageListViewContainer {
-    flex-direction: column; 
+    flex-direction: column;
+    overflow-y: scroll;
     flex: 3;
 }
 
