@@ -138,14 +138,17 @@ function KebabStoragePresenter(props) {
 
   function remFile(file) {
     if (file.includes(".")) {
-      props.model.connection.emit("remFile", (path + file), path);
+      var answer = window.confirm(`Delete the file "${file}"?`);
+      if (answer) { props.model.connection.emit("remFile", (path + file), path); setSelectedFile(null); }
     }
-    else
+    else {
       remFolder(file)
+    }
   }
 
   function remFolder(folder) {
-    props.model.connection.emit("removeFolder", path, folder);
+    var answer = window.confirm(`Delete the folder "${folder}"?`);
+    if (answer) { props.model.connection.emit("removeFolder", path, folder); setSelectedFile(null); }
   }
 
   function createFolder() {
