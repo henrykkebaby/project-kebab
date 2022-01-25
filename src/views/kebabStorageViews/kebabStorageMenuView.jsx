@@ -24,7 +24,7 @@ function KebabStorageMenuView(props) {
                                 <div>
                                     <img onClick={() => props.openFile(props.selectedFile)} height={"50px"} src={openFileIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
                                     {props.selectedFile.includes(".") ? <img onClick={() => props.getFile(props.selectedFile)} height={"50px"} src={downloadIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} /> : ""}
-                                    <img onClick={() => { props.remFile(props.selectedFile); props.setSelectedFile(null) }} height={"50px"} src={trashIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
+                                    <img onClick={() => { props.remFile(props.selectedFile); props.setSelectedFile(null); }} height={"50px"} src={trashIcon} style={{ margin: "30px", cursor: "pointer", userSelect: "none" }} />
                                 </div>
                             }
                         </div>

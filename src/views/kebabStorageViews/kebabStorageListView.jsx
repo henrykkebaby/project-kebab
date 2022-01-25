@@ -4,6 +4,7 @@ import folderIcon from "../../files/folderIcon.png"
 import fileIcon from "../../files/fileIcon.jpg"
 import upArrow from "../../files/upArrow.png"
 import spinnerIcon from "../../files/spinnerIcon.jpg"
+import trashIcon from "../../files/trashIcon.png"
 
 function KebabStorageListView(props) {
     return (
@@ -11,7 +12,7 @@ function KebabStorageListView(props) {
 
             {!(props.path === "/" || props.isListLoading) &&
                 <div className='KebabStorageListItem' onClick={() => { props.subPath(); props.setSelectedFile(null) }}>
-                    <img className='KebabStorageListImage' src={upArrow} height={"40px"} />
+                    <img className='KebabStorageListImage' src={upArrow} />
                 </div>
             }
 
@@ -26,17 +27,19 @@ function KebabStorageListView(props) {
                     return <div className='KebabStorageListItem' onClick={(e) => props.handleClick(item.toString(), e)} onDoubleClick={(e) => props.handleDoubleClick(item.toString(), e)} key={item}>
 
                         {item.toString().includes(".") ?
-                            <img className='KebabStorageListImage' src={fileIcon} height={"35px"} />
+                            <img className='KebabStorageListImage' src={fileIcon} />
                             :
-                            <img className='KebabStorageListImage' src={folderIcon} height={"35px"} />
+                            <img className='KebabStorageListImage' src={folderIcon} />
                         }
 
                         <h2 className='KebabStorageListText'>{item.toString()}</h2>
+                        {props.isMobile && <img className='KebabStorageListImage' onClick={(e) => { props.remFile(item.toString()); props.setSelectedFile(null); e.stopPropagation(); }} src={trashIcon} style={{ marginLeft: "auto" }} />}
                     </div>
                 })
 
             }
             {(!props.isListLoading && props.list.length === 0) && <h2 className='KebabStorageListText'>This Directory Is Empty</h2>}
+            <div style={{ height: "4cm" }}></div>
         </div >
     )
 }

@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import KebabStorageListView from '../views/kebabStorageViews/kebabStorageListView'
 import KebabStorageMenuView from '../views/kebabStorageViews/kebabStorageMenuView'
-import mime from 'mime'
+import KebabStorageMenuMobileView from '../views/kebabStorageViews/kebabStorageMenuMobileView'
 
-import openFileIcon from "../files/openFileIcon.png"
+import mime from 'mime'
 
 function KebabStoragePresenter(props) {
 
@@ -219,10 +219,13 @@ function KebabStoragePresenter(props) {
     <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "1.5cm", left: "0px", right: "0px" }}>
 
       {isMobile &&
-        <div style={{ position: "fixed", right: "1cm", bottom: "1cm" }}>
-          <input id="fileUploader" type="file" multiple="multiple" onChange={(e) => fileUpload(e.target.files)} style={{ display: "none" }} />
-          <label htmlFor="fileUploader" > <img src={openFileIcon} style={{ height: "2cm" }} /></label>
-        </div>
+        <KebabStorageMenuMobileView
+          fileUpload={fileUpload}
+          isLoading={isLoading}
+          isListLoading={isListLoading}
+          getDir={getDir}
+          path={path}
+        />
       }
 
       <KebabStorageListView
@@ -233,9 +236,8 @@ function KebabStoragePresenter(props) {
         setSelectedFile={setSelectedFile}
         handleClick={handleClick}
         handleDoubleClick={handleDoubleClick}
+        remFile={remFile}
       />
-
-
 
       {!isMobile &&
         <KebabStorageMenuView
