@@ -228,8 +228,8 @@ function KebabStoragePresenter(props) {
 
       {isMobile && isCreatingFolder &&
         <div style={{ position: "fixed", width: "100%", left: "50%", ight: "60px", bottom: "1.5cm", transform: "translate(-50%, 0)", display: "flex" }}>
-          <input id="folderInputMobile" type="text" autoComplete="off" style={{ height: "60px", flex: "7", fontSize: "0.5cm" }} placeholder="Create a folder here..." onKeyPress={event => { if (event.key === 'Enter') { createFolderMobile(); setIsCreatingFolder(false); } }} />
-          <button style={{ flex: 1, backgroundColor: "red", fontSize: "1cm" }} onClick={() => setIsCreatingFolder(false)}>X</button>
+          <input id="folderInputMobile" type="text" autoComplete="off" style={{ height: "60px", flex: "6", fontSize: "0.5cm" }} placeholder="Create a folder here..." onKeyPress={event => { if (event.key === 'Enter') { createFolderMobile(); setIsCreatingFolder(false); } }} />
+          <button style={{ flex: 1, backgroundColor: "red", fontSize: "0.8cm" }} onClick={() => setIsCreatingFolder(false)}>X</button>
         </div>
       }
 
