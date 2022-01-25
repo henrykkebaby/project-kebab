@@ -23,12 +23,12 @@ function KebabStorageListView(props) {
 
                 props.list.map((item) => {
 
-                    return <div className='KebabStorageListItem' onClick={() => props.handleClick(item.toString())} onDoubleClick={() => props.handleDoubleClick(item.toString())} key={item}>
+                    return <div className='KebabStorageListItem' onMouseDown={() => props.handleClick(item.toString())} onDoubleClick={() => props.handleDoubleClick(item.toString())} key={item}>
 
                         {item.toString().includes(".") ?
-                            <img className='KebabStorageListImage' src={fileIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
+                            <img className='KebabStorageListImage' src={fileIcon} height={"35px"} />
                             :
-                            <img className='KebabStorageListImage' src={folderIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
+                            <img className='KebabStorageListImage' src={folderIcon} height={"35px"} />
                         }
 
                         <h2 className='KebabStorageListText'>{item.toString()}</h2>

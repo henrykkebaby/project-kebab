@@ -189,17 +189,26 @@ function KebabStoragePresenter(props) {
   }
 
   function handleClick(item) {
+
     setIsListLoading(false);
     setIsLoading(false);
+
+    if (isMobile) {
+      if (item.includes(".")) { openFile(item) }
+      else { setSelectedFile(null); addPath(item); }
+      return;
+    }
     if (item.includes(".")) { setSelectedFile(item) }
     else { setSelectedFile(item) }
 
-    //element.style.backgroundColor = "rgb(130, 190, 240)"
   }
 
   function handleDoubleClick(item) {
+
     setIsListLoading(false);
     setIsLoading(false);
+
+    if (isMobile) { return; }
     if (item.includes(".")) { openFile(item) }
     else { setSelectedFile(null); addPath(item); }
   }
