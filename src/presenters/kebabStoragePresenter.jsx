@@ -220,7 +220,7 @@ function KebabStoragePresenter(props) {
   return (
     <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "1.5cm", left: "0px", right: "0px" }}>
 
-      {isCreatingFolder && <input id="folderInput" type="text" style={{ position: "fixed", height: "40px", width: "162px", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }} placeholder="Create a folder here..." onKeyPress={event => { if (event.key === 'Enter') { createFolder(); setIsCreatingFolder(false); } }} />}
+      {isCreatingFolder && <input id="folderInputMobile" type="text" autoComplete="off" style={{ position: "fixed", height: "60px", width: "200px", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }} placeholder="Create a folder here..." onKeyPress={event => { if (event.key === 'Enter') { createFolder(); setIsCreatingFolder(false); } }} />}
 
       {isMobile &&
 
