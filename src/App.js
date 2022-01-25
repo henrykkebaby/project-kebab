@@ -30,7 +30,7 @@ function App() {
 
   return (
 
-    <div style={{ overscrollBehavior: "contain" }}>
+    <div>
 
       <Appbar model={model} />
 
