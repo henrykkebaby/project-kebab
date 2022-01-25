@@ -17,6 +17,7 @@ function KebabStoragePresenter(props) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [connectionStatus, setConnectionStatus] = useState(props.model.connectionStatus);
   const [isMobile, setIsMobile] = useState(window.navigator.userAgentData.platform === "Android");
+  const [isCreatingFolder, setIsCreatingFolder] = useState(false);
 
   function handleDrag(e) {
     e.preventDefault()
@@ -219,13 +220,17 @@ function KebabStoragePresenter(props) {
   return (
     <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "1.5cm", left: "0px", right: "0px" }}>
 
+      {isCreatingFolder && <input id="folderInput" type="text" style={{ position: "fixed", height: "40px", width: "162px", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }} placeholder="Create a folder here..." onKeyPress={event => { if (event.key === 'Enter') { createFolder(); setIsCreatingFolder(false); } }} />}
+
       {isMobile &&
+
         <KebabStorageMenuMobileView
           fileUpload={fileUpload}
           isLoading={isLoading}
           isListLoading={isListLoading}
           getDir={getDir}
           path={path}
+          setIsCreatingFolder={setIsCreatingFolder}
         />
       }
 
