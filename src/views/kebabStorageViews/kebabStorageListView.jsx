@@ -27,14 +27,14 @@ function KebabStorageListView(props) {
 
                             <div onClick={() => props.handleClick(item.toString())} onDoubleClick={() => props.handleDoubleClick(item.toString())} key={item} style={{ flex: "1", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", cursor: "pointer", display: "flex", flexDirection: "row" }}>
                                 <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={fileIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
-                                <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
+                                <h2 style={{ marginTop: "10px", userSelect: "none", fontSize: "calc(85% + 1vw)" }}>{item.toString()}</h2>
                             </div>
 
                             :
 
                             <div onClick={() => props.handleClick(item.toString())} onDoubleClick={() => props.handleDoubleClick(item.toString())} key={item} style={{ flex: "1", height: "50px", backgroundColor: "rgb(250, 218, 77)", marginTop: "15px", textAlign: "left", cursor: "pointer", display: "flex", flexDirection: "row" }}>
                                 <img style={{ marginLeft: "10px", marginTop: "10px", marginRight: "15px", userSelect: "none" }} src={folderIcon} height={"35px"} onClick={() => props.getFile(item.toString())} />
-                                <h2 style={{ whiteSpace: "nowrap", marginTop: "10px", userSelect: "none" }}>{item.toString()}</h2>
+                                <h2 style={{ marginTop: "10px", userSelect: "none", fontSize: "calc(85% + 1vw)" }}>{item.toString()}</h2>
                             </div>
 
                     )
@@ -42,7 +42,7 @@ function KebabStorageListView(props) {
 
             }
             {!props.isListLoading && props.list.length === 0 ? <h2 style={{ userSelect: "none", margin: "20px" }}>This Directory Is Empty</h2> : ""}
-        </div>
+        </div >
     )
 }
 

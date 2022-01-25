@@ -8,7 +8,7 @@
 .AppbarFont {
   margin-right: 0.3cm;
   margin-left: 0.3cm;
-  font-size: 22px;
+  font-size: calc(85% + 1vw);
   font-weight: bold; 
   user-select: none;
 }

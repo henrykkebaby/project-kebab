@@ -204,6 +204,7 @@ function KebabStoragePresenter(props) {
 
   return (
     <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "60px", left: "0px", right: "0px" }}>
+
       <KebabStorageListView
         isListLoading={isListLoading}
         path={path} list={list}
@@ -213,7 +214,16 @@ function KebabStoragePresenter(props) {
         handleDoubleClick={handleDoubleClick}
       />
 
-      <KebabStorageMenuView
+
+
+    </div>
+  );
+}
+
+export default KebabStoragePresenter;
+
+/*
+<KebabStorageMenuView
         path={path}
         getFile={getFile}
         openFile={openFile}
@@ -224,9 +234,4 @@ function KebabStoragePresenter(props) {
         setSelectedFile={setSelectedFile}
         isLoading={isLoading}
       />
-
-    </div>
-  );
-}
-
-export default KebabStoragePresenter;
+      */
