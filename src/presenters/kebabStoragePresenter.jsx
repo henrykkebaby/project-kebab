@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import KebabStorageListView from '../views/kebabStorageViews/kebabStorageListView'
 import KebabStorageMenuView from '../views/kebabStorageViews/kebabStorageMenuView'
@@ -18,6 +18,10 @@ function KebabStoragePresenter(props) {
   const [connectionStatus, setConnectionStatus] = useState(props.model.connectionStatus);
   const [isMobile, setIsMobile] = useState(window.navigator.userAgentData.platform === "Android");
   const [isCreatingFolder, setIsCreatingFolder] = useState(false);
+
+  const [longPress, setLongPress] = useState(false);
+  const longPressRef = useRef(longPress);
+  longPressRef.current = longPress;
 
   function handleDrag(e) {
     e.preventDefault()
@@ -226,6 +230,21 @@ function KebabStoragePresenter(props) {
     else { setSelectedFile(null); addPath(item); }
   }
 
+  function handleTouchStart(item) {
+    setLongPress(true)
+    setTimeout(() => {
+      getFile(item)
+    }, 500);
+  }
+
+  function handleTouchEnd(e) {
+    setLongPress(false)
+  }
+
+  function handleTouchMove() {
+    setLongPress(false)
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "1.5cm", left: "0px", right: "0px" }}>
 
@@ -257,6 +276,9 @@ function KebabStoragePresenter(props) {
         handleClick={handleClick}
         handleDoubleClick={handleDoubleClick}
         remFile={remFile}
+        handleTouchStart={handleTouchStart}
+        handleTouchEnd={handleTouchEnd}
+        handleTouchMove={handleTouchMove}
       />
 
       {!isMobile &&

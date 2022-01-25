@@ -24,7 +24,7 @@ function KebabStorageListView(props) {
 
                 props.list.map((item) => {
 
-                    return <div className='KebabStorageListItem' onClick={(e) => props.handleClick(item.toString(), e)} onDoubleClick={(e) => props.handleDoubleClick(item.toString(), e)} key={item}>
+                    return <div className='KebabStorageListItem' onClick={(e) => props.handleClick(item.toString(), e)} onDoubleClick={(e) => props.handleDoubleClick(item.toString(), e)} onTouchStart={(e) => props.handleTouchStart(item.toString(), e)} onTouchEnd={(e) => props.handleTouchEnd(e)} onTouchMove={() => { props.handleTouchMove() }} key={item}>
 
                         {item.toString().includes(".") ?
                             <img className='KebabStorageListImage' src={fileIcon} />

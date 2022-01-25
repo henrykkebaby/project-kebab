@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "../styles/indexView.css";
 import kebabStorageLogo from "../files/kebabStorageLogo.png"
 import kebabTyperLogo from "../files/kebabTyperLogo.png"
 
 function IndexView(props) {
+
+
+
+
+
     return (
         <div className='IndexContainer'>
             <div className='Tile' style={{ backgroundColor: "rgb(240, 208, 65)" }} onClick={() => props.navigate("/project-kebab/kebabstorage/")}>
@@ -23,7 +28,7 @@ function IndexView(props) {
                 <img className='TileImage' src={kebabTyperLogo} />
             </div>
 
-        </div>
+        </div >
     )
 }
 
