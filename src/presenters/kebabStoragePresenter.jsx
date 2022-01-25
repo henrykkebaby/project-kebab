@@ -216,13 +216,8 @@ function KebabStoragePresenter(props) {
   return (
     <div style={{ display: "flex", flexDirection: "row", position: "absolute", bottom: "0px", top: "1.5cm", left: "0px", right: "0px" }}>
 
-      {isMobile &&
-        <div style={{ border: "2px solid black", height: "2cm" }}>
-
-        </div>
-      }
-
       <KebabStorageListView
+        isMobile={isMobile}
         isListLoading={isListLoading}
         path={path} list={list}
         subPath={subPath}

@@ -9,7 +9,13 @@ function KebabStorageListView(props) {
     return (
         <div className='KebabStorageListViewContainer'>
 
-            {(props.path === "/" || props.isListLoading) ? "" :
+            {props.isMobile &&
+                <div style={{ border: "2px black solid", height: "2cm" }}>
+
+                </div>
+            }
+
+            {!(props.path === "/" || props.isListLoading) &&
                 <div className='KebabStorageListItem' onClick={() => { props.subPath(); props.setSelectedFile(null) }}>
                     <img className='KebabStorageListImage' src={upArrow} height={"40px"} />
                 </div>
@@ -36,7 +42,7 @@ function KebabStorageListView(props) {
                 })
 
             }
-            {!props.isListLoading && props.list.length === 0 ? <h2 className='KebabStorageListText'>This Directory Is Empty</h2> : ""}
+            {(!props.isListLoading && props.list.length === 0) && <h2 className='KebabStorageListText'>This Directory Is Empty</h2>}
         </div >
     )
 }
