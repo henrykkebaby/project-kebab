@@ -1,5 +1,5 @@
 import React from 'react';
-//import "../../styles/styles.css";
+import "../../styles/kebabStorageViews/kebabStorageMenuView.css"
 import downloadIcon from "../../files/downloadIcon.png"
 import trashIcon from "../../files/trashIcon.png"
 import openFileIcon from "../../files/openFileIcon.png"
