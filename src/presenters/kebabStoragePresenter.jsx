@@ -214,7 +214,7 @@ function KebabStoragePresenter(props) {
     setIsListLoading(false);
     setIsLoading(false);
 
-    if (e.nativeEvent.pointerType === "touch") {
+    if (isMobile) {
       if (item.includes(".")) { openFile(item) }
       else { setSelectedFile(null); addPath(item); }
       return;
@@ -229,7 +229,7 @@ function KebabStoragePresenter(props) {
     setIsListLoading(false);
     setIsLoading(false);
 
-    if (e.nativeEvent.pointerType === "touch") { return; }
+    if (isMobile) { return; }
     if (item.includes(".")) { openFile(item) }
     else { setSelectedFile(null); addPath(item); }
   }
