@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import LoginView from '../views/loginView';
+import RegisterView from '../views/registerView';
 import { useNavigate } from "react-router-dom";
 
-function LoginPresenter(props) {
+function RegisterPresenter(props) {
 
     const [failed, setFailed] = useState(false)
     const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+    const [password1, setPassword1] = useState("")
+    const [password2, setPassword2] = useState("")
     const [auth, setAuth] = useState(false)
 
     const navigate = useNavigate();
@@ -19,17 +20,18 @@ function LoginPresenter(props) {
     useEffect(() => {
         if (auth) {
             setAuth(false)
-            sha256(password).then((promise) => {
+            sha256(password1).then((promise) => {
                 props.model.setAuth(username, promise);
                 navigate("/project-kebab/");
             })
         }
-    }, [auth, username, password])
+    }, [auth, username, password1])
 
     function submitter() {
         setFailed(false)
-        sha256(password).then((promise) => {
-            props.model.connection.emit("credentials", username, promise);
+        if (password1 !== password2) { setFailed(true); return; }
+        sha256(password1).then((promise) => {
+            props.model.connection.emit("accountcreation", username, promise);
         })
     }
 
@@ -41,19 +43,15 @@ function LoginPresenter(props) {
         return hashHex;
     }
 
-    function gotoRegister() {
-        navigate("/project-kebab/register/")
-    }
-
     return (
-        <LoginView
+        <RegisterView
             setUsername={setUsername}
-            setPassword={setPassword}
+            setPassword1={setPassword1}
+            setPassword2={setPassword2}
             submitter={submitter}
             failed={failed}
-            gotoRegister={gotoRegister}
         />
     )
 }
 
-export default LoginPresenter;
+export default RegisterPresenter;

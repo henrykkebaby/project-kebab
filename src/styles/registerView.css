@@ -1,4 +1,4 @@
-.LoginContainer { 
+.RegisterContainer { 
     position: absolute; 
     top: 1.5cm;
     bottom: 0px;
@@ -7,7 +7,7 @@
     background-color: rgb(250, 250, 250);
 }
 
-.LoginForm {
+.RegisterForm {
   background-color: rgb(250, 250, 250);
   position: absolute; 
   border: 1px solid black; 
@@ -21,23 +21,15 @@
   flex-direction: column;
 }
 
-.LoginInput {
+.RegisterInput {
   height: 1cm;
   font-size: 24px;
 }
 
-.LoginText {
+.RegisterText {
   font-size: 24px;
 }
 
-.LoginButton {
+.RegisterButton {
   height: 1cm;
-}
-
-.LoginRegisterButton {
-  position: absolute; 
-  bottom: 0; 
-  left: 50%;
-  transform: translate(-50%, 0);
-  cursor: pointer;
 }

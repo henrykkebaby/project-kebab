@@ -1,13 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../styles/indexView.css";
 import kebabStorageLogo from "../files/kebabStorageLogo.png"
-import kebabTyperLogo from "../files/kebabTyperLogo.png"
+import kebabDatabaseLogo from "../files/kebabDatabaseLogo.png"
 
 function IndexView(props) {
-
-
-
-
 
     return (
         <div className='IndexContainer'>
@@ -15,17 +11,14 @@ function IndexView(props) {
                 <a className="TileText" style={{ color: "black" }}>KEBAB STORAGE</a>
                 <img className='TileImage' src={kebabStorageLogo} />
             </div>
-            <div className='Tile' style={{ backgroundColor: "rgb(120,180,250)" }}>
-                <a className="TileText" style={{ color: "black" }}>KEBAB TYPER</a>
-                <img className='TileImage' src={kebabTyperLogo} />
-            </div>
-            <div className='Tile' style={{ backgroundColor: "rgb(250,120,120)" }}>
-                <a className="TileText" style={{ color: "black" }}>KEBAB PDF</a>
-                <img className='TileImage' src={kebabTyperLogo} />
-            </div>
-            <div className='Tile' style={{ backgroundColor: "rgb(44,44,60)" }}>
+            {/*}
+            <div className='Tile' style={{ backgroundColor: "rgb(54,54,70)" }} onClick={() => props.navigate("/project-kebab/kebabdatabase/")}>
                 <a className="TileText" style={{ color: "white" }}>KEBAB DATABASE</a>
-                <img className='TileImage' src={kebabTyperLogo} />
+                <img className='TileImage' src={kebabDatabaseLogo} />
+            </div>
+        {*/}
+            <div className='Tile' style={{ backgroundColor: "rgb(220,220,220)" }} onClick={() => props.navigate("/project-kebab/admin/")}>
+                <a className="TileText" style={{ color: "white" }}>ADMIN PAGES</a>
             </div>
 
         </div >

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { io } from "socket.io-client";
 
@@ -6,7 +6,10 @@ import "./styles/styles.css"
 import Model from "./models/model";
 import Index from './presenters/indexPresenter';
 import KebabStorage from './presenters/kebabStoragePresenter';
+import KebabDatabase from './presenters/kebabDatabasePresenter';
 import Login from './presenters/loginPresenter';
+import Register from './presenters/registerPresenter';
+import Admin from './components/admin';
 import Appbar from "./presenters/appbarPresenter";
 
 const model = new Model();
@@ -48,8 +51,20 @@ function App() {
           <Login model={model} />
         } />
 
+        <Route path="/project-kebab/register/" element={
+          <Register model={model} />
+        } />
+
         <Route path="/project-kebab/kebabstorage/" element={
           <KebabStorage model={model} />
+        } />
+
+        <Route path="/project-kebab/kebabdatabase/" element={
+          <KebabDatabase model={model} />
+        } />
+
+        <Route path="/project-kebab/admin/" element={
+          <Admin model={model} />
         } />
 
         <Route path="*" element={
