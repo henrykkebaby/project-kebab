@@ -33,7 +33,6 @@ function KebabStoragePresenter(props) {
   }
 
   useEffect(() => {
-
     window.addEventListener("dragover", handleDrag)
     window.addEventListener("drop", handleDrop)
     return () => {
@@ -192,8 +191,12 @@ function KebabStoragePresenter(props) {
   }
 
   function fileUpload(uploadFile) {
-    setIsLoading(true)
+
     if (uploadFile == null) { return; }
+
+    setIsLoading(true);
+    setSelectedFile(uploadFile[0].name);
+
     [...uploadFile].forEach(file => {
       let baseURL = "";
       let reader = new FileReader();
