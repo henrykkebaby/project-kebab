@@ -18,7 +18,7 @@ function KebabStorageListView(props) {
 
             {props.isListLoading ?
 
-                !props.isMobile && <img src={spinnerIcon} height={"150px"} style={{ userSelect: "none", margin: "30px" }} />
+                !props.isMobile && <img src={spinnerIcon} height={"150px"} style={{ marginLeft: "50%", transform: "translate(-50%, 0)", userSelect: "none", marginTop: "30px" }} />
 
                 :
 
