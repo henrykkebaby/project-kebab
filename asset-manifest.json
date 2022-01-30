@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-kebab/static/css/main.0620605f.css",
-    "main.js": "/project-kebab/static/js/main.8f0c1a8d.js",
+    "main.js": "/project-kebab/static/js/main.c12dfd98.js",
     "static/js/787.4960fd22.chunk.js": "/project-kebab/static/js/787.4960fd22.chunk.js",
     "static/media/redLockIcon.png": "/project-kebab/static/media/redLockIcon.1c2f5f5d557b0da4b11e.png",
     "static/media/lockIcon.png": "/project-kebab/static/media/lockIcon.ec04aa1add7eae1d6302.png",
@@ -9,11 +9,11 @@
     "static/media/trashIcon.png": "/project-kebab/static/media/trashIcon.5bcbeb7593a5548d605c.png",
     "index.html": "/project-kebab/index.html",
     "main.0620605f.css.map": "/project-kebab/static/css/main.0620605f.css.map",
-    "main.8f0c1a8d.js.map": "/project-kebab/static/js/main.8f0c1a8d.js.map",
+    "main.c12dfd98.js.map": "/project-kebab/static/js/main.c12dfd98.js.map",
     "787.4960fd22.chunk.js.map": "/project-kebab/static/js/787.4960fd22.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0620605f.css",
-    "static/js/main.8f0c1a8d.js"
+    "static/js/main.c12dfd98.js"
   ]
 }
